@@ -1,0 +1,33 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-10-15 21:08+0200\n"
+"Language: Deutsch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Category"
+msgstr "Kategorie"
+
+msgid "Categories"
+msgstr "Kategorien"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Amount"
+msgstr "Menge"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Expense"
+msgstr "Ausgabe"
+
+msgid "Expenses"
+msgstr "Ausgaben"
