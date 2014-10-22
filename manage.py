@@ -4,6 +4,8 @@ import sys
 
 if __name__ == '__main__':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'budgetbutler.settings.production')
+    sys.path.append('/app/vendor/node/bin/')
+    sys.path.append('/app/node_modules/.bin/')
 
     from django.core.management import execute_from_command_line
 
