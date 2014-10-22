@@ -40,7 +40,7 @@ MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
 
 INSTALLED_APPS = (
     'django.contrib.admin',
