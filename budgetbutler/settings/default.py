@@ -1,13 +1,6 @@
 import os
 
-PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
-
-SECRET_KEY = '!4an791w31rha_#m26(5io-9woqk)@x&*&m9mrmf3vsgxw=oew'
-
-DEBUG = True
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -32,7 +25,9 @@ DATABASES = {
 
 LANGUAGE_CODE = 'de-DE'
 
-LOCALE_PATHS = (os.path.join(PROJECT_DIR, 'conf', 'locale'),)
+LOCALE_PATHS = (
+    os.path.join(PROJECT_DIR, 'conf', 'locale'),
+)
 
 TIME_ZONE = 'Europe/Berlin'
 
@@ -45,6 +40,7 @@ MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 INSTALLED_APPS = (
     'django.contrib.admin',

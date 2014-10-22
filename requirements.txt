@@ -1,4 +1,10 @@
+# App
 Django==1.7
+
+# Static Files
 django-pipeline==1.3.25
 PyReact==0.4.1
+whitenoise==1.0.3
+
+# Server
 gunicorn==19.1.1
