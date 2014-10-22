@@ -55,6 +55,8 @@ INSTALLED_APPS = (
     'pipeline',
 )
 
+PIPELINE_ENABLED = True
+PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
 PIPELINE_CSS = {
     'style': {
         'source_filenames': (
@@ -64,6 +66,7 @@ PIPELINE_CSS = {
         'output_filename': 'min/css/style.min.css',
     },
 }
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
 PIPELINE_JS = {
     'script': {
         'source_filenames': (
