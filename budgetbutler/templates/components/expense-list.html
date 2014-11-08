@@ -16,5 +16,12 @@
             <td>{% trans 'Total' %}:</td>
             <td>{{ sum_amount|currency }}</td>
         </tr>
+        <tr>
+            <td colspan="2"> {% url 'expenses:add' as add %}
+                <a class="btn btn-default add-btn" href="{{ add }}">
+                    <span>{% trans 'Add' %}</span>
+                </a>
+            </td>
+        </tr>
     </tbody>
 </table>
