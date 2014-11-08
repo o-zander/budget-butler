@@ -1,3 +1,6 @@
+# coding=utf-8
+from __future__ import unicode_literals
+
 import os
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
@@ -72,8 +75,8 @@ PIPELINE_JS = {
         'source_filenames': (
             'js/libs/jquery-2.1.1.min.js',
             'js/libs/bootstrap.min.js',
-            'js/libs/react-0.11.2.min.js',
-            'jsx/apps.jsx'
+            #'js/libs/react-0.11.2.min.js',
+            #'jsx/apps.jsx'
         ),
         'output_filename': 'min/js/script.min.js',
     }
@@ -83,3 +86,5 @@ PIPELINE_COMPILERS = (
     'pipeline.compilers.less.LessCompiler',
 )
 PIPELINE_DISABLE_WRAPPER = True
+
+CURRENCY = '€'

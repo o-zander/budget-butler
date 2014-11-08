@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% load i18n %}
+
+{% block content %}
+    <div class="expense-view">
+        {% include 'components/date-picker.html' %}
+        {% include 'components/expense-list.html' %}
+        <table class="table">
+            <tr>
+                <td> {% url 'expenses:add' as add %}
+                    <a class="btn btn-default" href="{{ add }}">
+                        <span>{% trans 'Add' %}</span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
+

@@ -1,26 +1,45 @@
-from django.forms import model_to_dict
 from django.http import HttpResponse, JsonResponse
-from django.views.generic import TemplateView, View
+from django.views.generic import View, DayArchiveView, RedirectView, CreateView
+from budgetbutler.utils import get_date_url
 
-from .models import Category, Expense
+from .forms import ExpenseModelForm
+from .models import Expense
 
 
 class JsonView(View):
+    safe = True
 
     def dispatch(self, request, *args, **kwargs):
         data = super(JsonView, self).dispatch(request, *args, **kwargs)
 
         if isinstance(data, HttpResponse):
             return data
-        return JsonResponse(data)
+        return JsonResponse(data, safe=self.safe)
 
 
-class IndexView(TemplateView):
-    template_name = 'index.html'
+class RedirectToToday(RedirectView):
+    permanent = False
+
+    def get_redirect_url(self, *args, **kwargs):
+        return get_date_url()
 
 
-class ExpenseView(JsonView):
+class ExpenseMixIn(object):
+    model = Expense
 
-    def get(self, request, *args, **kwargs):
-        expenses = [Expense(description='Expense %i' % i, amount=i) for i in range(5)]
-        return {'expenses': [model_to_dict(expense) for expense in expenses]}
+
+class ExpenseListView(ExpenseMixIn, DayArchiveView):
+    template_name = 'budgetbutler/expense-list-view.html'
+    allow_empty = True
+    allow_future = True
+    date_field = 'date'
+    month_format = '%m'
+
+    def get_context_data(self, object_list, **kwargs):
+        kwargs.update(sum_amount=object_list.get_sum_amount(), object_list=object_list)
+        return super(ExpenseListView, self).get_context_data(**kwargs)
+
+
+class ExpenseAddView(ExpenseMixIn, CreateView):
+    form_class = ExpenseModelForm
+    template_name = 'budgetbutler/expense-add-view.html'
