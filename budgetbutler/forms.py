@@ -1,3 +1,5 @@
+from datetime import date, datetime
+
 from django import forms
 
 from .models import Expense
@@ -6,7 +8,8 @@ from .models import Expense
 class DateInput(forms.DateInput):
 
     def render(self, name, value, attrs=None):
-        return super(DateInput, self).render(name, value.strftime('%Y-%m-%d'), attrs=attrs)
+        value = value.strftime('%Y-%m-%d') if isinstance(value, (date, datetime)) else value
+        return super(DateInput, self).render(name, value, attrs=attrs)
 
 
 class ExpenseModelForm(forms.ModelForm):
