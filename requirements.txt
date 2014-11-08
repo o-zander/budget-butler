@@ -1,5 +1,5 @@
 # App
-Django==1.7
+Django==1.7.1
 
 # Static Files
 django-pipeline==1.3.25
@@ -8,3 +8,7 @@ whitenoise==1.0.3
 
 # Server
 gunicorn==19.1.1
+
+# DataBase
+psycopg2==2.5.4
+dj-database-url==0.3.0
