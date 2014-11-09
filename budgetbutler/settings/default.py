@@ -68,8 +68,6 @@ PIPELINE_JS = {
         'source_filenames': (
             'js/libs/jquery-2.1.1.min.js',
             'js/libs/bootstrap.min.js',
-            #'js/libs/react-0.11.2.min.js',
-            #'jsx/apps.jsx'
         ),
         'output_filename': 'min/js/script.min.js',
     }
