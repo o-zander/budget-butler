@@ -1,0 +1,12 @@
+{% load i18n %}
+{% for week, days in weeks_with_days %}
+    <div class="content-block-title">{% trans 'Week' %} {{ week }}</div>
+    <div class="list-block">
+        <ul>
+        {% for day in days %}
+            {% include 'components/day-list-item.html' with saldo=0 %}
+        {% endfor %}
+        </ul>
+    </div>
+{% endfor %}
+

@@ -54,9 +54,10 @@ INSTALLED_APPS = (
 PIPELINE_ENABLED = True
 PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
 PIPELINE_CSS = {
-    'style': {
+    'styles': {
         'source_filenames': (
-            'css/bootstrap.min.css',
+            'css/framework7.min.css',
+            'css/framework7.themes.min.css',
             'less/custom-style.less',
         ),
         'output_filename': 'min/css/style.min.css',
@@ -64,10 +65,10 @@ PIPELINE_CSS = {
 }
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
 PIPELINE_JS = {
-    'script': {
+    'scripts': {
         'source_filenames': (
-            'js/libs/jquery-2.1.1.min.js',
-            'js/libs/bootstrap.min.js',
+            'js/libs/framework7.min.js',
+            'js/budget-butler.js',
         ),
         'output_filename': 'min/js/script.min.js',
     }

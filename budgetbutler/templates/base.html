@@ -1,27 +1,31 @@
-<!DOCTYPE html> {% load compressed static %}
+<!DOCTYPE html> {% load static i18n compressed %} {% get_current_language as language %}
 <html>
-    <head>
-        <title>Budget Butler</title>
-
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+    <head lang="{{ language }}">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-title" content="Budget Butler">
 
-        {% compressed_css 'style' %}
-    </head>
+        <title>Budget Butler</title>
 
-    <body>
-        <div id="container" class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12" id="content">
-                    {% block content %}{% endblock %}
-                </div>
+        {% compressed_css 'styles' %}
+    </head>
+    <body class="theme-blue">
+        <div class="statusbar-overlay"></div>
+
+        <div class="panel-overlay"></div>
+
+        <div class="panel panel-left panel-reveal">
+            <div class="content-block">
+                {% block left-panel-content %}{% endblock %}
             </div>
         </div>
 
-        {% compressed_js 'script' %}
+        <div class="views">
+            {% block views %}{% endblock %}
+        </div>
+
+        {% compressed_js 'scripts' %}
     </body>
 </html>

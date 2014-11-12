@@ -1,0 +1,11 @@
+<div class="view {{ name }}-view">
+    {% include 'components/navbar.html' %}
+
+    <div class="pages navbar-through toolbar-through">
+        <div data-page="{{ name }}" class="page">
+            <div class="page-content">
+                {% include template %}
+            </div>
+        </div>
+    </div>
+</div>

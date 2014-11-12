@@ -1,0 +1,13 @@
+<li> {% load budgetbutler_tags %} {% url 'day' year=day|date:'Y' month=day|date:'m' day=day|date:'d' as href %}
+    <a href="{{ href }}" class="item-content item-link{% if day.month != date.month %} disabled{% endif %}">
+        <div class="item-inner">
+            <div class="item-title">
+                {{ day|date:'d.m. l' }}
+            </div>
+            <div class="item-after {{ saldo|amount_class:'budget' }}">
+                {{ saldo|currency }}
+            </div>
+        </div>
+    </a>
+</li>
+

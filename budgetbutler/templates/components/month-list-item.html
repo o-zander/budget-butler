@@ -1,0 +1,8 @@
+<li> {% url 'month' year=month|date:'Y' month=month|date:'m' as href %}
+    <a href="{{ href }}" class="item-content item-link">
+        <div class="item-inner">
+            <div class="item-title">{{ month|date:'F' }}</div>
+        </div>
+    </a>
+</li>
+

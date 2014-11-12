@@ -1,0 +1,11 @@
+{% for year, months in years_with_months %}
+    <div class="content-block-title">{{ year }}</div>
+    <div class="list-block">
+        <ul>
+        {% for month in months %}
+            {% include 'components/month-list-item.html' %}
+        {% endfor %}
+        </ul>
+    </div>
+{% endfor %}
+

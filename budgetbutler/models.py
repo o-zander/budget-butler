@@ -3,10 +3,13 @@ from __future__ import unicode_literals
 
 from decimal import Decimal
 
+from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from .utils import current_date, get_date_url
+
+CURRENCY = settings.CURRENCY
 
 
 class Category(models.Model):
@@ -21,6 +24,15 @@ class Category(models.Model):
         return self.name
 
 
+class BaseExpense(models.Model):
+    amount = models.DecimalField(_('Amount'), decimal_places=2, max_digits=8, help_text=CURRENCY)
+    description = models.CharField(_('Description'), max_length=100)
+    category = models.ForeignKey(Category, verbose_name=_('Category'), blank=True, null=True)
+
+    class Meta:
+        abstract = True
+
+
 class ExpenseQuerySet(models.QuerySet):
 
     def get_sum_amount(self):
@@ -28,11 +40,8 @@ class ExpenseQuerySet(models.QuerySet):
         return qs.get('sum') or Decimal('0.00')
 
 
-class Expense(models.Model):
+class Expense(BaseExpense):
     date = models.DateField(_('Date'), default=current_date)
-    amount = models.DecimalField(_('Amount'), decimal_places=2, max_digits=8)
-    description = models.CharField(_('Description'), max_length=100)
-    category = models.ForeignKey(Category, verbose_name=_('Category'), blank=True, null=True)
 
     objects = ExpenseQuerySet.as_manager()
 
@@ -42,7 +51,7 @@ class Expense(models.Model):
         ordering = ('-date',)
 
     def __unicode__(self):
-        return '{0} ({1}): {2}€'.format(self.description, self.date, self.amount)
+        return '{0} ({1}): {2}{3}'.format(self.description, self.date, self.amount, CURRENCY)
 
     def get_absolute_url(self):
         return get_date_url(date=self.date)

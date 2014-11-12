@@ -1,0 +1,21 @@
+{% load i18n %}
+<div class="list-block">
+    <ul>
+        {% include 'components/expense-list-budget-item.html' %}
+    </ul>
+</div>
+{% if expense_list %}
+<div class="list-block">
+    <ul>
+    {% for expense in expense_list %}
+        {% include 'components/expense-list-expense-item.html' %}
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<div class="list-block">
+    <ul>
+        {% include 'components/expense-list-total-item.html' %}
+    </ul>
+</div>
+

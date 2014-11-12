@@ -1,0 +1,10 @@
+<li class="item-content item-empty-link"> {% load i18n budgetbutler_tags %}
+    <div class="item-inner">
+        <div class="item-title">
+            {% trans 'Total' %}
+        </div>
+        <div class="item-after {{ total|amount_class:'expense' }}">
+            {{ total|currency }}
+        </div>
+    </div>
+</li>

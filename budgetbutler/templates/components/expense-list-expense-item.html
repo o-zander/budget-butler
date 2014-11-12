@@ -1,0 +1,15 @@
+<li> {% load budgetbutler_tags %}
+    <a href="#" class="item-content item-link">
+        <div class="item-inner">
+            <div class="item-title">
+                {{ expense.description }}
+            </div>
+            {% with amount=expense.amount %}
+            <div class="item-after {{ amount|amount_class:'expense' }}">
+                {{ amount|currency }}
+            </div>
+            {% endwith %}
+        </div>
+    </a>
+</li>
+
