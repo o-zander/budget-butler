@@ -74,7 +74,6 @@ PIPELINE_JS = {
     }
 }
 PIPELINE_COMPILERS = (
-    'react.utils.pipeline.JSXCompiler',
     'pipeline.compilers.less.LessCompiler',
 )
 PIPELINE_DISABLE_WRAPPER = True
