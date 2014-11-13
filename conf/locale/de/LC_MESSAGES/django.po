@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-15 21:08+0200\n"
+"POT-Creation-Date: 2014-11-13 07:56+0100\n"
 "Language: Deutsch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,17 +17,32 @@ msgstr "Kategorie"
 msgid "Categories"
 msgstr "Kategorien"
 
-msgid "Date"
-msgstr "Datum"
-
 msgid "Amount"
 msgstr "Menge"
 
 msgid "Description"
 msgstr "Beschreibung"
 
+msgid "Recurrent Expense"
+msgstr "Wiederkehrende Ausgabe"
+
+msgid "Recurrent Expenses"
+msgstr "Wiederkehrende Ausgaben"
+
+msgid "Date"
+msgstr "Datum"
+
 msgid "Expense"
 msgstr "Ausgabe"
 
 msgid "Expenses"
 msgstr "Ausgaben"
+
+msgid "Week"
+msgstr "Woche"
+
+msgid "Budget"
+msgstr "Budget"
+
+msgid "Total"
+msgstr "Gesamt"
