@@ -26,6 +26,8 @@
             {% block views %}{% endblock %}
         </div>
 
+        {% include 'popups/add-expense-popup.html' %}
+
         {% compressed_js 'scripts' %}
     </body>
 </html>

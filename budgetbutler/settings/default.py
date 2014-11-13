@@ -67,6 +67,7 @@ PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
 PIPELINE_JS = {
     'scripts': {
         'source_filenames': (
+            'js/libs/jquery.min.js',
             'js/libs/framework7.min.js',
             'js/budget-butler.js',
         ),

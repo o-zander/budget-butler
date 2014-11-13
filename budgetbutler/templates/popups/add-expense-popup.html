@@ -1,0 +1,20 @@
+{% load i18n %} {% url 'add' as url %}
+<div class="popup add-expense-popup" data-url="{{ url }}">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a href="#" class="close-popup">
+                    {% trans 'Cancel' %}
+                </a>
+            </div>
+            <div class="center">{% trans 'Add expense' %}</div>
+            <div class="right">
+                <a href="#" class="link form-submit">
+                    {% trans 'Add' %}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="list-block add-expense-popup-content"></div>
+</div>

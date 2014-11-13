@@ -35,7 +35,10 @@ class MonthDetailView(TemplateView):
     
     def get_context_data(self, **kwargs):
         date = datetime.date(int(self.kwargs.get('year')), int(self.kwargs.get('month')), 1)
-        weeks_with_days = get_days(date.year, date.month)
+        weeks_with_days = [
+            (week, [(day, Expense.objects.get_budget(day)) for day in days])
+            for week, days in get_days(date.year, date.month)
+        ]
         return super(MonthDetailView, self).get_context_data(date=date, weeks_with_days=weeks_with_days)
 
 
@@ -54,11 +57,17 @@ class ExpenseListView(ExpenseMixIn, DayArchiveView):
     date_field = 'date'
     month_format = '%m'
 
-    def get_context_data(self, object_list, **kwargs):
-        kwargs.update(total=object_list.get_sum_amount(), object_list=object_list, budget=0)
-        return super(ExpenseListView, self).get_context_data(**kwargs)
+    def render_to_response(self, context, **response_kwargs):
+        objects, date = (lambda object_list, day, **extra: (object_list, day))(**context)
+        context.update(total=objects.get_sum_amount(), budget=Expense.objects.get_budget(date))
+        return super(ExpenseListView, self).render_to_response(context, **response_kwargs)
 
 
 class ExpenseAddView(ExpenseMixIn, CreateView):
     form_class = ExpenseModelForm
-    template_name = 'budgetbutler/expense-add-view.html'
+    template_name = 'forms/add-expense-form.html'
+
+    def form_valid(self, form):
+        self.object = form.save()
+        url = self.get_success_url()
+        return JsonResponse({'pk': self.object.pk, 'url': url}, status=201)

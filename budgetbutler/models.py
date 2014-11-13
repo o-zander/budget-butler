@@ -7,7 +7,7 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from .utils import current_date, get_date_url
+from .utils import current_date, get_date_url, get_month_range
 
 CURRENCY = settings.CURRENCY
 
@@ -39,6 +39,11 @@ class ExpenseQuerySet(models.QuerySet):
         qs = self.aggregate(sum=models.Sum('amount'))
         return qs.get('sum') or Decimal('0.00')
 
+    def get_budget(self, date):
+        first, last = get_month_range(date)
+        amount = self.filter(date__lt=date).get_sum_amount() * -1
+        return amount / (last + 1 - date.day)
+
 
 class Expense(BaseExpense):
     date = models.DateField(_('Date'), default=current_date)
@@ -51,7 +56,7 @@ class Expense(BaseExpense):
         ordering = ('-date',)
 
     def __unicode__(self):
-        return '{0} ({1}): {2}{3}'.format(self.description, self.date, self.amount, CURRENCY)
+        return '{0} ({1:%x}): {2:.2f} {3}'.format(self.description, self.date, self.amount, CURRENCY)
 
     def get_absolute_url(self):
         return get_date_url(date=self.date)
